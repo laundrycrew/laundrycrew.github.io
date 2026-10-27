@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Laundry Crew Location Feasibility</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧺</text></svg>">
+  <style>
+    html, body { margin: 0; height: 100%; background: #fff; }
+    #app { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; }
+    #msg { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px;
+           box-sizing: border-box; text-align: center; font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color: #555; }
+    #msg.error { color: #b3261e; }
+  </style>
+</head>
+<body>
+  <div id="msg">กำลังโหลด...</div>
+  <iframe id="app" title="Laundry Crew Location Feasibility" allow="geolocation; clipboard-write; fullscreen"></iframe>
+  <noscript>ต้องเปิด JavaScript เพื่อใช้งานแอปนี้</noscript>
+
+  <script>
+    // ▼▼ ใส่ลิงก์ Web app ของ Apps Script (ต้องลงท้ายด้วย /exec) แทนข้อความด้านล่าง ▼▼
+    const APP_URL = 'https://script.google.com/macros/s/AKfycbxT0Z1HbaYQsK6LCqT1yi0ueUmvf74Y_bkwJNgpfi1KWErcReq6V2K53FuUQzDTLYqxbQ/exec';
+    // ▲▲ เช่น https://script.google.com/macros/s/AKfycb.../exec ▲▲
+
+    const msg = document.getElementById('msg');
+    const frame = document.getElementById('app');
+    if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(APP_URL)) {
+      msg.className = 'error';
+      msg.textContent = 'ยังไม่ได้ใส่ลิงก์ Apps Script (/exec) ในไฟล์ index.html';
+      frame.remove();
+    } else {
+      frame.addEventListener('load', () => msg.remove());
+      frame.src = APP_URL;
+    }
+  </script>
+</body>
+</html>
